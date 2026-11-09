@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import logo from "./Images/logo.png";
+import "./Header.scss";
+import Menuicon from "./Menuicon/Menuicon";
+import Divider from "@mui/material/Divider";
+import { MdOutlineContactPage } from "react-icons/md";
+import ContactModal from "../../shared/contact-modal/ContactModal";
+
+const Header = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleNavLinkClick = (index) => {
+    setActiveIndex(index);
+    setIsOpen(false);
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const Navdata = [
+    {
+      menu: "Home",
+      url: "#",
+    },
+    {
+      menu: "About",
+      url: "#about",
+    },
+    {
+      menu: "Skills",
+      url: "#skills",
+    },
+    {
+      menu: "Project",
+      url: "#project",
+    },
+    {
+      menu: "Experience",
+      url: "#experience",
+    },
+    {
+      menu: "Education",
+      url: "#education",
+    },
+    {
+      menu: "Recognition",
+      url: "#recognition",
+    },
+  ];
+
+  return (
+    <>
+      <Navbar collapseOnSelect expand="lg" fixed="top" className="main-header">
+        <Container>
+          <Navbar.Brand href="#home" className="logo">
+            <img src={logo} alt="Revanth portfolio logo" />
+            <h4>Portfolio</h4>
+          </Navbar.Brand>
+          <Menuicon handleToggle={handleToggle} isOpen={isOpen} />
+          <Navbar.Collapse
+            id="responsive-navbar-nav"
+            className={isOpen ? "show" : ""}
+          >
+            <Nav className="ms-auto">
+              {Navdata.map((data, index) => (
+                <Nav.Link
+                  href={data.url}
+                  key={index}
+                  eventKey={index}
+                  smooth
+                  active={index === activeIndex}
+                  onClick={() => handleNavLinkClick(index)}
+                >
+                  {data.menu}
+                </Nav.Link>
+              ))}
+              <Divider
+                sx={{
+                  height: 30,
+                  m: 0,
+                  width: "1px",
+                  border: "1px solid var(--surface-border)",
+                  display: {
+                    xs: "none",
+                    md: "none",
+                    sm: "none",
+                    lg: "block",
+                  },
+                }}
+                orientation="vertical"
+              />
+              <span className="contact-btn" onClick={handleClickOpen}>
+                <button>
+                  <MdOutlineContactPage />
+                  Contact Me
+                </button>
+                <span className="circle"></span>
+              </span>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <ContactModal open={open} handleClose={handleClose} />
+    </>
+  );
+};
+
+export default Header;

@@ -1,0 +1,175 @@
+.about-section {
+  padding: 60px 0px;
+  background: var(--background-second-color);
+}
+.about-content h2 {
+  font-weight: 700;
+  color: var(--text-color);
+  font-family: system-ui;
+  letter-spacing: 0.03em;
+}
+
+.underline-animation {
+  height: 3px;
+  width: 100px;
+  background: #00e9d8;
+  margin: 20px 0px;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.underline-animation::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 10px;
+  background: var(--underline-color);
+  animation: underline 2s linear infinite;
+}
+@keyframes underline {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(85px);
+  }
+}
+.about-list {
+  margin-top: 25px;
+}
+.about-list ul li {
+  list-style-type: none;
+  font-size: 17px;
+  color: var(--text-color);
+  padding-bottom: 20px;
+  font-family: system-ui;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+.about-list ul {
+  padding: 0;
+}
+.about-list ul li svg {
+  margin-right: 12px;
+  color: #00e9d8;
+  animation: arrow-animation 1s linear infinite;
+  position: relative;
+}
+@keyframes arrow-animation {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* Aspect ratio 1:1 for square iframe */
+  height: 0;
+  overflow: hidden;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.personal-detail {
+  display: grid;
+  gap: 12px;
+  margin: 10px 0 30px;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.20fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: baseline;
+  font-size: 17px;
+
+  dt,
+  dd {
+    margin: 0;
+    color: var(--text-color);
+    overflow-wrap: anywhere;
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    font-family: Outfit, sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--heading-color);
+      text-decoration: underline;
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+  .about-section {
+    padding: 50px 0px;
+  }
+  .personal-detail {
+    gap: 10px;
+  }
+
+  .detail-row {
+    grid-template-columns: minmax(76px, 0.35fr) minmax(0, 1fr);
+    gap: 10px;
+  }
+  .about-list ul li {
+    font-size: 15px;
+  }
+  .about-section .container .row {
+    flex-direction: column-reverse;
+  }
+  .iframe-container {
+    width: 80%;
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .about-section {
+    padding: 50px 0px;
+  }
+  .iframe-container {
+    width: 80%;
+    margin: auto;
+  }
+  .about-section .container .row {
+    flex-direction: column-reverse;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .about-section .container .row {
+    flex-direction: column-reverse;
+  }
+}
