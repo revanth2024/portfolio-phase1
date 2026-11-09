@@ -46,10 +46,6 @@ const Header = () => {
       url: "#skills",
     },
     {
-      menu: "Project",
-      url: "#project",
-    },
-    {
       menu: "Experience",
       url: "#experience",
     },
@@ -58,8 +54,16 @@ const Header = () => {
       url: "#education",
     },
     {
+      menu: "Project",
+      url: "#project",
+    },
+    {
       menu: "Recognition",
       url: "#recognition",
+    },
+    {
+      menu: "Contact",
+      url: "#contact",
     },
   ];
 
@@ -106,8 +110,8 @@ const Header = () => {
               />
               <span className="contact-btn" onClick={handleClickOpen}>
                 <button>
-                  <MdOutlineContactPage />
-                  Contact Me
+                  {/* <MdOutlineContactPage /> */}
+                  Let's Connect
                 </button>
                 <span className="circle"></span>
               </span>
