@@ -23,8 +23,9 @@ npm run preview
 ```
 
 Production files are generated in `dist/`. `npm run deploy` publishes that
-directory to GitHub Pages; the Vite base path is configured for the
-`/portfolio/` project site.
+directory to GitHub Pages using the `/portfolio/` project-site base path.
+The standard `npm run build` uses a root-relative base path for Vercel and
+other root-hosted deployments.
 
 ## Source structure
 
